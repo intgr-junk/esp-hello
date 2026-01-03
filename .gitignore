@@ -1,4 +1,5 @@
 /.vscode
+/.idea
 /.embuild
+espflash_ports.toml
 /target
-/Cargo.lock
