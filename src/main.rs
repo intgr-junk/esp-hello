@@ -22,8 +22,12 @@ fn blinker() -> Result<(), AnyErr> {
     esp_idf_hal::sys::link_patches();
 
     let peripherals = Peripherals::take()?;
-    let timer_driver = LedcTimerDriver::new(peripherals.ledc.timer0, &TimerConfig::default().frequency(25_000.into()))?;
-    let mut driver = LedcDriver::new(peripherals.ledc.channel0, timer_driver, peripherals.pins.gpio15)?;
+    let timer_driver = LedcTimerDriver::new(
+        peripherals.ledc.timer0,
+        &TimerConfig::default().frequency(25_000.into()),
+    )?;
+    let mut driver =
+        LedcDriver::new(peripherals.ledc.channel0, timer_driver, peripherals.pins.gpio15)?;
     let max_duty = driver.get_max_duty();
 
     let start_time = Instant::now();
